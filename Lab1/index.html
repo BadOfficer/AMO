@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Лабораторна робота 1</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <h1>Лабораторна робота 1</h1>
+    </header>
+    <main class="main">
+      <aside class="side-menu">
+        <div class="side-menu_variants side-menu_effect">
+          <h3>Меню</h3>
+          <div class="side-menu_variant">
+            <h2 class="side-menu_variant-title">Лінійний</h2>
+            <button class="side-menu_button btn" id="first-algorithm_btn">
+              Обрати
+            </button>
+          </div>
+          <div class="side-menu_variant">
+            <h2 class="side-menu_variant-title">З розгалуженням</h2>
+            <button class="side-menu_button btn" id="second-algorithm_btn">
+              Обрати
+            </button>
+          </div>
+          <div class="side-menu_variant">
+            <h2 class="side-menu_variant-title">Циклічний</h2>
+            <button class="side-menu_button btn" id="third-algorithm_btn">
+              Обрати
+            </button>
+          </div>
+        </div>
+        <div class="side-menu_footer side-menu_effect">
+          <h3>Виконав</h3>
+          <div class="side-menu_text">
+            <p>Група: <span>ІО-24</span></p>
+            <p>ПІБ: <span>Бондаренко Тарас Андрійович</span></p>
+            <p>Варіант: <span>2</span></p>
+          </div>
+        </div>
+      </aside>
+      <div class="main-content_container">
+        <div class="main-content">
+          <h3 class="main-content_title">Виконання</h3>
+          <p class="error" id="select-error">Оберіть один з алгоритмів</p>
+
+          <div class="main-content_card" id="first_algorithm">
+            <h4 class="main-content_card-title card-text">
+              Алгоритм: <span>Лінійний</span>
+            </h4>
+            <p class="main-content_card-task card-text">
+              <span>Завдання: </span>
+              <img src="assets/item_1.png" alt="Y1=⌈a-z⌉ + ⌈a+z⌉ / 6" />
+            </p>
+            <div class="main-content_card-inputs">
+              <p class="card-text">Вхідні дані:</p>
+              <div class="main-content_card-input_container">
+                <label for="a">Введіть a:</label>
+                <input type="number" name="a" id="first_a" class="entry_data" />
+              </div>
+              <div class="main-content_card-input_container">
+                <label for="a">Введіть z:</label>
+                <input type="number" name="z" id="first_z" class="entry_data" />
+              </div>
+            </div>
+            <p class="card-text main-content_card-result">
+              Результат: <span id="first_res" class="res">0</span>
+            </p>
+            <div class="main-content_card-buttons">
+              <button class="btn" id="first_calc">Обчислити</button>
+              <label class="btn" for="first_read_a">
+                Завантажити з файлу дані для a
+              </label>
+              <input
+                type="file"
+                class="btn"
+                id="first_read_a"
+                style="display: none"
+                accept=".txt"
+              />
+              <label class="btn" for="first_read_z">
+                Завантажити з файлу дані для z
+              </label>
+              <input
+                type="file"
+                class="btn"
+                id="first_read_z"
+                style="display: none"
+                accept=".txt"
+              />
+              <button class="btn" id="clear_first">Очистити поля</button>
+            </div>
+          </div>
+
+          <div class="main-content_card" id="second_algorithm">
+            <h4 class="main-content_card-title card-text">
+              Алгоритм: <span>З розгалуженням</span>
+            </h4>
+            <p class="main-content_card-task card-text">
+              <span>Завдання: </span>
+              <img
+                src="assets/item_2.png"
+                alt="y=2a^2 + x для a > 10 , та y=2a^2 - x в іншому випадку"
+              />
+            </p>
+            <div class="main-content_card-inputs">
+              <p class="card-text">Вхідні дані:</p>
+              <div class="main-content_card-input_container">
+                <label for="a">Введіть a:</label>
+                <input
+                  type="number"
+                  name="a"
+                  id="second_a"
+                  class="entry_data"
+                />
+              </div>
+              <div class="main-content_card-input_container">
+                <label for="x">Введіть x:</label>
+                <input
+                  type="number"
+                  name="x"
+                  id="second_x"
+                  class="entry_data"
+                />
+              </div>
+            </div>
+            <p class="card-text main-content_card-result">
+              Результат: <span id="second_res" class="res">0</span>
+            </p>
+            <div class="main-content_card-buttons">
+              <button class="btn" id="second_calc">Обчислити</button>
+              <label class="btn" for="second_read_a">
+                Завантажити з файлу дані для a
+              </label>
+              <input
+                type="file"
+                class="btn"
+                id="second_read_a"
+                style="display: none"
+                accept=".txt"
+              />
+              <label class="btn" for="second_read_x">
+                Завантажити з файлу дані для x
+              </label>
+              <input
+                type="file"
+                class="btn"
+                id="second_read_x"
+                style="display: none"
+                accept=".txt"
+              />
+              <button class="btn" id="clear_second">Очистити поля</button>
+            </div>
+          </div>
+
+          <div class="main-content_card" id="third_algorithm">
+            <h4 class="main-content_card-title card-text">
+              Алгоритм: <span>Циклічний</span>
+            </h4>
+            <p class="main-content_card-task card-text">
+              <span>Завдання: </span>
+              <img
+                src="assets/item_3.png"
+                alt="f=∏[i=1, 5] (a[i]^3 - b[i] ^ 2) / a[i] * b[i]"
+              />
+            </p>
+            <div class="main-content_card-inputs">
+              <p class="card-text">Вхідні дані:</p>
+              <div class="main-content_card-input_container">
+                <label for="a">Введіть a:</label>
+                <input type="text" name="a" id="third_a" class="entry_data" />
+              </div>
+              <div class="main-content_card-input_container">
+                <label for="b">Введіть b:</label>
+                <input type="text" name="b" id="third_b" class="entry_data" />
+              </div>
+              <p class="comment">
+                // Вводити дані через пробіл(Наприклад: 1 2 3 4 5)
+              </p>
+            </div>
+            <p class="card-text main-content_card-result">
+              Результат: <span id="third_res" class="res">0</span>
+            </p>
+            <div class="main-content_card-buttons">
+              <button class="btn" id="third_calc">Обчислити</button>
+              <label class="btn" for="third_read_a">
+                Завантажити з файлу дані для a
+              </label>
+              <input
+                type="file"
+                class="btn"
+                id="third_read_a"
+                style="display: none"
+                accept=".txt"
+              />
+              <label class="btn" for="third_read_b">
+                Завантажити з файлу дані для b
+              </label>
+              <input
+                type="file"
+                class="btn"
+                id="third_read_b"
+                style="display: none"
+                accept=".txt"
+              />
+              <button class="btn" id="clear_third">Очистити поля</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <div class="modal" id="modal">
+      <div class="modal_btn-container">
+        <button id="modal-btn"></button>
+      </div>
+      <div class="modal_content">
+        <h2 class="modal_title">Помилка</h2>
+        <p id="modal-text"></p>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
