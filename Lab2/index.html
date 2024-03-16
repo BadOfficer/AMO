@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторна робота №2</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container" id="container">
+        <header class="header">
+            <div class="header-content">
+                <h1>Лабораторна робота №2</h1>
+            </div>
+        </header>
+        <main class="main">
+            <section class="main__navbar">
+                <nav>
+                    <ul>
+                        <li class="main__navbar-item"><button id="entry-data-btn">Ввести дані</button></li>
+                        <li class="main__navbar-item"><button id="first-graphic">Побудувати графік</button></li>
+                        <li class="main__navbar-item"><button id="theorty_graphic">Теоретичний графік</button></li>
+                        <li class="main__navbar-item"><button id="info-btn">Інформація про студента</button></li>
+                    </ul>
+                </nav>
+            </section>
+            <section class="graphic" id="graphic">
+                <canvas id="graphic1"></canvas>
+            </section>
+        </main>
+    </div>
+    <div class="modal" id="entry-modal">
+        <div class="modal__content">
+            <div class="modal__manager">
+                <h2>Ввід даних</h2>
+                <div class="modal__close" id="modal-close">&times;</div>
+            </div>
+            <div class="modal__tabs">
+                <div class="modal__tabs-menu">
+                    <ul>
+                        <li class="modal__tabs-item">З однаковою довжиною</li>
+                        <li class="modal__tabs-item">З різною довжиною</li>
+                    </ul>
+                </div>
+                <div class="modal__tabs-content">
+                    <div class="modal__tab-content">
+                        <div class="modal__input-container">
+                            <label for="all-arrays-length">Введіть довжину масивів</label>
+                            <input type="number" id="all-arrays-length" class="modal__input" min="1">
+                        </div>
+                    </div>
+                    <div class="modal__tab-content">
+                        <div class="modal__input-container">
+                            <label for="first-array-length">Введіть довжину першого масиву</label>
+                            <input type="number" id="first-array-length" class="modal__second-input" min="1">
+                        </div>
+                        <div class="modal__input-container">
+                            <label for="second-array-length">Введіть довжину другого масиву</label>
+                            <input type="number" id="second-array-length" class="modal__second-input" min="1">
+                        </div>
+                        <div class="modal__input-container">
+                            <label for="third-array-length">Введіть довжину третього масиву</label>
+                            <input type="number" id="third-array-length" class="modal__second-input" min="1">
+                        </div>
+                        <div class="modal__input-container">
+                            <label for="fourth-array-length">Введіть довжину четвертого масиву</label>
+                            <input type="number" id="fourth-array-length" class="modal__second-input" min="1">
+                        </div>
+                        <div class="modal__input-container">
+                            <label for="fifth-arrays-length">Введіть довжину п'ятого масиву</label>
+                            <input type="number" id="fifth-array-length" class="modal__second-input" min="1">
+                        </div>
+                        <div class="modal__input-container">
+                            <label for="sixth-array-length">Введіть довжину шостого масиву</label>
+                            <input type="number" id="sixth-array-length" class="modal__second-input" min="1">
+                        </div>
+                        <div class="modal__input-container">
+                            <label for="seventh-array-length">Введіть довжину сьомого масиву</label>
+                            <input type="number" id="seventh-array-length" class="modal__second-input" min="1">
+                        </div>
+                        <div class="modal__input-container">
+                            <label for="eighth-array-length">Введіть довжину восьмого масиву</label>
+                            <input type="number" id="eighth-array-length" class="modal__second-input" min="1">
+                        </div>
+                        <div class="modal__input-container">
+                            <label for="ninth-array-length">Введіть довжину дев'ятого масиву</label>
+                            <input type="number" id="ninth-array-length" class="modal__second-input" min="1">
+                        </div>
+                        <div class="modal__input-container">
+                            <label for="tenth-array-length">Введіть довжину десятого масиву</label>
+                            <input type="number" id="tenth-array-length" class="modal__second-input" min="1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="check-container">
+                <input type="checkbox" name="add-array" id="check">
+                <label for="add-array">Включити найлегший та найважчий масиви</label>
+            </div>
+            <div class="modal_bttons">
+                <button id="save-arrays">Зберегти</button>
+                <button id="clear-arrays">Очистити</button>
+                <label class="read-btn" for="read-btn">
+                    Завантажити з файлу дані
+                  </label>
+                  <input
+                    type="file"
+                    class="read-btn"
+                    id="read-btn"
+                    style="display: none"
+                    accept=".txt"
+                  />
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="info-modal">
+        <div class="modal__content">
+            <div class="modal__manager">
+                <h2>Інформація про студента</h2>
+                <div class="modal__close" id="modal-close">&times;</div>
+            </div>
+            <div class="modal__main-info">
+                <p>Варіант: 2</p>
+                <p>Група: ІО-24</p>
+                <p>ПІБ: Бондаренко Тарас Андрійович</p>
+            </div>
+        </div>
+    </div>
+    <div class="error-message" id="error-message">
+        <div class="error-message__manager">
+            <h2>Помилка</h2>
+            <div class="modal__close" id="error-message__close">&times;</div>
+        </div>
+        <p class="error-message__text" id="error-message__text"></p>
+    </div>
+    <script src="
+https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js
+"></script>
+    <script src="script.js"></script>
+</body>
+</html>
