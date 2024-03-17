@@ -25,9 +25,6 @@ let marker;
 let counter = 0;
 let unsortedText;
 
-// showArraysBtn.addEventListener("click", () => {
-//   toggleModal(showArrays);
-// })
 readBtn.addEventListener("change", (e) => readData(e.target));
 
 entryBtn.addEventListener("click", () => {

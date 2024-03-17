@@ -241,8 +241,6 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   max-height: 70%;
-  overflow-y: auto;
-  scroll-behavior: smooth;
 }
 .modal__close{
   text-align: right;
@@ -252,7 +250,7 @@ body {
 }
 .modal__tabs{
   height: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
   position: relative;
 }
 .modal__tabs-content{
@@ -262,6 +260,7 @@ body {
   justify-content: center;
   height: 80%;
   margin-top: 15px;
+
 }
 .modal__tabs-menu ul{
   display: flex;
@@ -353,8 +352,8 @@ body {
   height: 4px;
 }
 ::-webkit-scrollbar-track {
-  background: #728495;
+  background: white;
 }
 ::-webkit-scrollbar-thumb {
-  background: #263a47;
+  background: #728495;
 }
