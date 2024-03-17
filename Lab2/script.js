@@ -16,13 +16,18 @@ const errorMsg = document.getElementById("error-message");
 const errorP = document.getElementById("error-message__text");
 const errorCloseBtn = document.getElementById("error-message__close");
 const check = document.getElementById("check");
-const theoryGraphic = document.getElementById("theorty_graphic");
+// const showArrays = document.getElementById("arrays-modal");
+// const showArraysBtn = document.getElementById("show-arrays");
 
 let lengthOfArrays;
 let checked;
 let marker;
 let counter = 0;
+let unsortedText;
 
+// showArraysBtn.addEventListener("click", () => {
+//   toggleModal(showArrays);
+// })
 readBtn.addEventListener("change", (e) => readData(e.target));
 
 entryBtn.addEventListener("click", () => {
@@ -35,12 +40,13 @@ closeButton[0].addEventListener("click", () => {
 });
 infoBtn.addEventListener("click", () => toggleModal(modal2));
 closeButton[1].addEventListener("click", () => toggleModal(modal2));
+// closeButton[3].addEventListener("click", () => toggleModal(showArrays));
 
 saveBtn.addEventListener("click", () => saveArrays());
 clearBtn.addEventListener("click", () => clearInputs());
 
 firstGraphic.addEventListener("click", () => generateArrays());
-theoryGraphic.addEventListener("click", () => showGraphic("graphic1", generateGraphicData(), "x", "y"))
+showGraphic("graphic_2","graphic2", generateGraphicData(), "x", "y")
 
 tabs.forEach((tab, index) => {
   tab.addEventListener("click", () => switchTab(index));
@@ -84,6 +90,14 @@ function saveArrays() {
   toggleModal(modal);
   clearInputs();
 }
+function showArraysFunc(parEl, arrays) {
+  const parent = document.getElementById(parEl);
+  for(let i = 0; i < arrays.length; i++){
+    const con = document.createElement("div");
+    con.textContent = `Масив ${i + 1}: ${arrays[i]}`;
+    parent.appendChild(con);
+  }
+}
 
 function switchTab(tabIndex) {
   tabContents.forEach(content => content.style.display = 'none');
@@ -95,22 +109,27 @@ function switchTab(tabIndex) {
 }
 
 function generateEasyArray(arrayLength) {
-  const newArray = Array.from({ length: arrayLength }, (_, i) => i + 1);
-  console.log(newArray);
+  const newArray = [];
+  newArray.push(2);
+  for(let i = 1; i <= arrayLength; i++) {
+    if(i === 2) {
+      continue;
+    }else{
+      newArray.push(i);
+    }
+  }
   return newArray;
 }
 
 function generateHardArray(arrayLength) {
   const newArray = Array.from({ length: arrayLength }, (_, i) => arrayLength - i);
-  console.log(newArray);
   return newArray;
 }
 
 function generateAllArrays(arrayLengths, numOfArrays) {
   const arrays = Array.from({ length: numOfArrays }, () =>
-    Array.from({ length: arrayLengths }, () => Math.floor(Math.random() * 100))
+    Array.from({ length: arrayLengths }, () => Math.floor(Math.random() * 100000))
   );
-  console.log(arrays);
   return arrays;
 }
 function generateAllArraysRandom(numOfArrays, arrayLengths, start) {
@@ -119,20 +138,19 @@ function generateAllArraysRandom(numOfArrays, arrayLengths, start) {
     for(let i = start; i < numOfArrays; i++) {
       const newArray = [];
       for(let j = 0; j < arrayLengths[i]; j++) {
-        newArray.push(Math.floor(Math.random() * 100));
+        newArray.push(Math.floor(Math.random() * 100000));
       }
       array.push(newArray);
     }
-    console.log(array);
   }else {
     for(let i = start; i <= numOfArrays; i++) {
       const newArray = [];
       for(let j = 0; j < arrayLengths[i]; j++) {
-        newArray.push(Math.floor(Math.random() * 100));
+        newArray.push(Math.floor(Math.random() * 100000));
       }
       array.push(newArray);
     }
-    console.log(array);
+  
   }
   return array;
 }
@@ -156,21 +174,22 @@ function generateArrays() {
     }
   } else {
     if(checked) {
-      console.log(checked);
       const firstArr = generateHardArray(lengthOfArrays[0]);
       const secondArr = generateAllArraysRandom(8, lengthOfArrays, 1);
       const thirdArr = generateEasyArray(lengthOfArrays[lengthOfArrays.length - 1]);
       arrToSort = [firstArr, ...secondArr, thirdArr];
-      console.log(arrToSort);
     }
     else{
       arrToSort = generateAllArraysRandom(10, lengthOfArrays, 0);
     }
   }
-
+  unsortedText = arrToSort;
+  // showArraysFunc("unsorted-arrays", unsortedText);
+  console.log(unsortedText);
   const [sortedArr, times] = insertionSort(arrToSort);
+  // showArraysFunc("sorted-arrays", sortedArr);
   const data = objFromArr(sortedArr, times);
-  showGraphic("graphic1", data, "Кількість елементів", "Час виконання");
+  showGraphic("graphic_1", "graphic1", data, "Кількість елементів", "Час виконання");
 }
 
 function readData(fileInput) {
@@ -199,7 +218,7 @@ function writeData(data) {
 function insertionSort(ar) {
   const times = [];
   ar.forEach(element => {
-    const start = Date.now();
+    const start = performance.now();
     for (let j = 1; j < element.length; j++) {
         let key = element[j];
         let i = j - 1;
@@ -209,7 +228,7 @@ function insertionSort(ar) {
         }
         element[i + 1] = key;
     }
-    const end = Date.now() - start;
+    const end = performance.now() - start;
     times.push(end);
   });
   return [ar, times];
@@ -249,7 +268,7 @@ function objFromArr(arr, times) {
   return data;
 }
 
-function showGraphic(el, data, x_label, y_label) {
+function showGraphic(section, el, data, x_label, y_label) {
   if(document.getElementById(el)) {
     document.getElementById(el).remove();
   }
@@ -257,8 +276,7 @@ function showGraphic(el, data, x_label, y_label) {
   att.value = el;
   const newEl = document.createElement("canvas");
   newEl.setAttributeNode(att);
-  document.getElementById("graphic").append(newEl)
-  console.log(data);
+  document.getElementById(section).append(newEl)
   const ctx = document.getElementById(el).getContext('2d');
 
       const graphic = new Chart(ctx, {
@@ -305,6 +323,5 @@ function generateGraphicData() {
       lengthArr: i,
     });
   }
-  console.log(data);
   return data;
 }

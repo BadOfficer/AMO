@@ -19,13 +19,18 @@
                     <ul>
                         <li class="main__navbar-item"><button id="entry-data-btn">Ввести дані</button></li>
                         <li class="main__navbar-item"><button id="first-graphic">Побудувати графік</button></li>
-                        <li class="main__navbar-item"><button id="theorty_graphic">Теоретичний графік</button></li>
                         <li class="main__navbar-item"><button id="info-btn">Інформація про студента</button></li>
+                        <!-- <li class="main__navbar-item"><button id="show-arrays">Показати масиви</button></li> -->
                     </ul>
                 </nav>
             </section>
-            <section class="graphic" id="graphic">
+            <section class="graphic" id="graphic_1">
+                <h2>Побудований графік</h2>
                 <canvas id="graphic1"></canvas>
+            </section>
+            <section class="graphic" id="graphic_2">
+                <h2>Теоретичний графік</h2>
+                <canvas id="graphic2"></canvas>
             </section>
         </main>
     </div>
@@ -133,6 +138,25 @@
         </div>
         <p class="error-message__text" id="error-message__text"></p>
     </div>
+    <!-- <div class="modal" id="arrays-modal">
+        <div class="modal__content">
+            <div class="modal__manager">
+                <h2>Масиви</h2>
+                <div class="modal__close" id="modal-close">&times;</div>
+            </div>
+            <div class="modal__main-info">
+                <h3>Не відсортовані масиви:</h3>
+                <div class="unsorted-arrays" id="unsorted-arrays">
+
+                </div>
+
+                <h3>Відсортовані масиви:</h3>
+                <div class="sorted-arrays" id="sorted-arrays">
+                    
+                </div>
+            </div>
+        </div>
+    </div> -->
     <script src="
 https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js
 "></script>

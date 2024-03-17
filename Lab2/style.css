@@ -137,7 +137,7 @@ body {
   background-color: #263a47;
   height: 100vh;
   font-family: "Oswald", sans-serif;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .container{
@@ -240,6 +240,9 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  max-height: 70%;
+  overflow-y: auto;
+  scroll-behavior: smooth;
 }
 .modal__close{
   text-align: right;
@@ -304,6 +307,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  position: relative;
+  overflow-x: hidden;
 }
 .error-message{
   position: absolute;
@@ -324,12 +329,32 @@ body {
 }
 .graphic{
   background-color: white;
-  height: 70%;
+  height: 50%;
   display: flex;
   justify-content: center;
   margin-top: 25px;
   border-radius: 15px;
 }
+.graphic h2{
+  margin: 15px 0;
+}
 .check-container{
   text-align: center;
+}
+.unsorted-arrays div,
+.sorted-arrays div{
+  overflow-x: auto;
+  overflow-y: hidden;
+  line-height: 1.6;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #728495;
+}
+::-webkit-scrollbar-thumb {
+  background: #263a47;
 }
