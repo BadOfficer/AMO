@@ -24,7 +24,6 @@ let checked;
 let marker;
 let counter = 0;
 let unsortedText;
-aaa
 
 readBtn.addEventListener("change", (e) => readData(e.target));
 
