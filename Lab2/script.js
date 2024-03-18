@@ -186,7 +186,7 @@ function generateArrays() {
   const [sortedArr, times] = insertionSort(arrToSort);
   // showArraysFunc("sorted-arrays", sortedArr);
   const data = objFromArr(sortedArr, times);
-  showGraphic("graphic_1", "graphic1", data, "Кількість елементів", "Час виконання");
+  showGraphic("graphic_1", "graphic1", sortDataByTime(data), "Кількість елементів", "Час виконання");
 }
 
 function readData(fileInput) {
@@ -321,4 +321,10 @@ function generateGraphicData() {
     });
   }
   return data;
+}
+
+function sortDataByTime(data) {
+  return data.sort((a, b) => {
+    return a.lengthArr - b.lengthArr;
+  });
 }
