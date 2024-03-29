@@ -123,7 +123,7 @@ ul {
 .tabs__navbar ul {
     display: flex;
     justify-content: center;
-    gap: 30px;
+    gap: 5px;
     padding: 2px;
 }
 .tabs__item{
@@ -165,4 +165,43 @@ ul {
     display: flex;
     align-items: flex-start;
     gap: 15px;
+}
+.error-message{
+    position: fixed;
+    top: 5px;
+    right: 5px;
+    padding: 25px;
+    background-color: red;
+    border-radius: 15px;
+    transform: translateX(500px);
+}
+.error-message h3{
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+.error-message__close{
+    position: absolute;
+    top: 0;
+    right: 10px;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+.error-message__close::before,
+.error-message__close::after{
+    content: "";
+    width: 2px;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #080808;
+}
+.error-message__close::before{
+    transform: rotate(45deg);
+}
+.error-message__close::after{
+    transform: rotate(-45deg);
 }
