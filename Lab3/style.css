@@ -54,7 +54,7 @@ ul {
 
 .container{
     display: grid;
-    grid-template-rows: 1.4fr 10fr;
+    grid-template-rows: 100px 10fr;
     height: 100%;
     min-height: 100vh;
     background-color: #3a3a3a;
@@ -92,7 +92,7 @@ ul {
     justify-content: center;
     gap: 15px;
 }
-.main__navbar-item button{
+button{
     background-color: #9fa4a3;
     border: none;
     padding: 8px 20px;
@@ -100,9 +100,10 @@ ul {
     box-shadow: 3px 3px 5px #3a3a3a;
     font-size: 18px;
     cursor: pointer;
+    color: #3a3a3a;
 }
-.main__navbar-item button:hover,
-.main__navbar-item button.active{
+button:hover,
+button.active{
     background-color: #667579;
     color: #d0cdc9;
 }
@@ -113,6 +114,8 @@ ul {
 }
 .tabs{
     text-align: center;
+    margin-top: 15px;
+    width: 100%;
 }
 .tabs__navbar{
     display: inline-block;
@@ -134,11 +137,19 @@ ul {
 .tabs__item.active{
     background-color: #9fa4a3;
 }
+.tabs_content-container{
+    display: flex;
+    justify-content: center
+}
+.tabs__content{
+    flex-direction: column;
+    width: 75%;
+    align-items: center;
+}
 .tabs__content:last-child{
     display: none;
 }
 .student{
-    display: flex;
     flex-direction: column;
     align-items: center;
     gap: 15px;
@@ -150,7 +161,7 @@ ul {
     color: #9fa4a3;
     margin-top: 15px;
 }
-.student__info{
+.section__content{
     padding: 25px;
     background-color: #717b7f;
     display: inline-block;
@@ -205,3 +216,61 @@ ul {
 .error-message__close::after{
     transform: rotate(-45deg);
 }
+.entry-section{
+    flex-direction: column;
+    gap: 15px;
+    font-size: 18px;
+    font-weight: 600;
+}
+.entry-section p{
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    font-size: 18px;
+}
+.entry__fields{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.entry__fields input,
+.entry__fields input:active{
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #9fa4a3;
+    color: #3a3a3a;
+    outline: none;
+    border: none;
+}
+.entry__field{
+    display: grid;
+    grid-template: 2fr 5fr;
+    gap: 10px;
+}
+.entry__buttons{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+.entry__task{
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+.graphic{
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+    border-radius: 15px;
+    width: 100%;
+  }
+
+  .tabs__content h3{
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 15px;
+    color: #9fa4a3;
+  }

@@ -17,15 +17,41 @@
             <div class="main__navbar">
                 <ul class="main__navbar-list">
                     <li class="main__navbar-item"><button>Ввід даних</button></li>
-                    <li class="main__navbar-item"><button>Графіки</button></li>
+                    <li class="main__navbar-item"><button id="graphics-btn">Графіки</button></li>
                     <li class="main__navbar-item"><button>Похибки</button></li>
                     <li class="main__navbar-item"><button>Інформація про студента</button></li>
                 </ul>
             </div>
             <section class="entry-section section">
-                Entry
+                <h2>Ввід даних</h2>
+                <div class="section__content">
+                    <div class="entry__task"><p>Завдання:</p><img src="assets/task.png" alt="task"></div>
+                    <div class="entry__fields">
+                        <div class="entry__field">
+                            <label for="a">Від:</label>
+                            <input type="number" placeholder="Вкажіть значення A" name="a" value="1" id="a-value">
+                        </div>
+                        <div class="entry__field">
+                            <label for="b">До:</label>
+                            <input type="number" placeholder="Вкажіть значення B" name="b" value="5" id="b-value">
+                        </div>
+                        <div class="entry__field">
+                            <label for="n">Кількість точок:</label>
+                            <input type="number" placeholder="Вкажіть значення n" name="n" id="n-value">
+                        </div>
+                        <div class="entry__field">
+                            <label for="x">x:</label>
+                            <input type="number" placeholder="Вкажіть значення x" name="x" id="x-value">
+                        </div>
+                        <div class="entry__buttons">
+                            <button id="calculate">Обчислити</button>
+                            <button>Очистити</button>
+                        </div>
+                    </div>
+                </div>
             </section>
             <section class="graphics section">
+                <h2>Графіки</h2>
                 <div class="tabs">
                     <div class="tabs__navbar">
                         <ul>
@@ -34,8 +60,26 @@
                         </ul>
                     </div>
                     <div class="tabs_content-container">
-                        <div class="tabs__content">1</div>
-                        <div class="tabs__content">2</div>
+                        <div class="tabs__content">
+                            <h3>Графік інтерпольованої функції</h3>
+                            <div class="graphic" id="graphic_1_container">
+                                <canvas id="graphic1"></canvas>
+                            </div>
+                            <h3>Графік вихідної функції</h3>
+                            <div class="graphic" id="graphic_2_container">
+                                <canvas id="graphic2"></canvas>
+                            </div>
+                        </div>
+                        <div class="tabs__content">
+                            <h3>Графік інтерпольованої функції</h3>
+                            <div class="graphic" id="graphic_3_container">
+                                <canvas id="graphic3"></canvas>
+                            </div>
+                            <h3>Графік вихідної функції</h3>
+                            <div class="graphic" id="graphic_4_container">
+                                <canvas id="graphic4"></canvas>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -44,10 +88,9 @@
             </section>
             <section class="section student">
                 <h2>Інформація про студента</h2>
-                <div class="student__info">
+                <div class="section__content student__info">
                     <div class="student__info_container">
                         <p>Варіант: 2</p>
-                        <p>Завдання: <img src="assets/task.png" alt="task"></p>
                         <p>Група: ІО-24</p>
                         <p>ПІБ: Бондаренко Тарас Андрійович</p>
                     </div>
@@ -60,6 +103,9 @@
         <h3>Помилка</h3>
         <p>Виникла помилка</p>
     </div>
+    <script src="
+https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js
+"></script>
     <script src="script.js"></script>
 </body>
 </html>
