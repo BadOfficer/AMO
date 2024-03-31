@@ -18,7 +18,7 @@
                 <ul class="main__navbar-list">
                     <li class="main__navbar-item"><button>Ввід даних</button></li>
                     <li class="main__navbar-item"><button id="graphics-btn">Графіки</button></li>
-                    <li class="main__navbar-item"><button>Похибки</button></li>
+                    <li class="main__navbar-item"><button id="errors-btn">Похибки</button></li>
                     <li class="main__navbar-item"><button>Інформація про студента</button></li>
                 </ul>
             </div>
@@ -44,8 +44,8 @@
                             <input type="number" placeholder="Вкажіть значення x" name="x" id="x-value">
                         </div>
                         <div class="entry__buttons">
-                            <button id="calculate">Обчислити</button>
-                            <button>Очистити</button>
+                            <button id="calculate-btn">Обчислити</button>
+                            <button id="clear-btn">Очистити</button>
                         </div>
                     </div>
                 </div>
@@ -69,22 +69,57 @@
                             <div class="graphic" id="graphic_2_container">
                                 <canvas id="graphic2"></canvas>
                             </div>
-                        </div>
-                        <div class="tabs__content">
-                            <h3>Графік інтерпольованої функції</h3>
+                            <h3>Графік похибок</h3>
                             <div class="graphic" id="graphic_3_container">
                                 <canvas id="graphic3"></canvas>
                             </div>
-                            <h3>Графік вихідної функції</h3>
+                        </div>
+                        <div class="tabs__content">
+                            <h3>Графік інтерпольованої функції</h3>
                             <div class="graphic" id="graphic_4_container">
                                 <canvas id="graphic4"></canvas>
+                            </div>
+                            <h3>Графік вихідної функції</h3>
+                            <div class="graphic" id="graphic_5_container">
+                                <canvas id="graphic5"></canvas>
+                            </div>
+                            <h3>Графік похибок</h3>
+                            <div class="graphic" id="graphic_6_container">
+                                <canvas id="graphic6"></canvas>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
             <section class="section errors">
-                Errors
+                <h2>Похибки</h2>
+                <table id="errors__table">
+                    <tr>
+                        <th>n</th>
+                        <th>Похибка</th>
+                        <th>Різниця</th>
+                        <th>Коефіцієнт k</th>
+                    </tr>
+                    <tbody id="table__content">
+                        
+                    </tbody>
+                </table>
+                <table class="x-table" id="x-table">
+                    <tr>
+                        <th>x</th>
+                        <th>f(x)</th>
+                        <th>Похибка</th>
+                        <th>Різниця</th>
+                        <th>Коефіцієнт k</th>
+                    </tr>
+                    <tr>
+                        <td class="x-table-values"></td>
+                        <td class="x-table-values"></td>
+                        <td class="x-table-values"></td>
+                        <td class="x-table-values"></td>
+                        <td class="x-table-values"></td>
+                    </tr>
+                </table>
             </section>
             <section class="section student">
                 <h2>Інформація про студента</h2>
@@ -98,10 +133,10 @@
             </section>
         </main>
     </div>
-    <div class="error-message">
-        <div class="error-message__close"></div>
+    <div class="error-message" id="error-message">
+        <div class="error-message__close" id="close-error"></div>
         <h3>Помилка</h3>
-        <p>Виникла помилка</p>
+        <p id="error-message-p"></p>
     </div>
     <script src="
 https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js

@@ -40,12 +40,12 @@ time{
   font: inherit;
   vertical-align: baseline;
 }
+
 body {
   line-height: 1;
   font-family: "Roboto Mono", monospace;
   font-optical-sizing: auto;
   font-style: normal;
-  transition: .2;
 }
 ol,
 ul {
@@ -180,11 +180,11 @@ button.active{
 .error-message{
     position: fixed;
     top: 5px;
-    right: 5px;
+    right: -5000px;
     padding: 25px;
     background-color: red;
     border-radius: 15px;
-    transform: translateX(500px);
+    transition: .2s;
 }
 .error-message h3{
     font-size: 24px;
@@ -273,4 +273,22 @@ button.active{
     font-weight: 600;
     margin-top: 15px;
     color: #9fa4a3;
+  }
+  .errors h2{
+    margin-bottom: 15px;
+  }
+  td{
+    background-color: #9fa4a3;
+
+  }
+  table, th, td {
+    border: 2px solid #717b7f;
+    text-align: center;
+  }
+  th{
+    background-color: #667579;
+    padding: 5px 15px;
+  }
+  .x-table{
+    margin-top: 15px;
   }
