@@ -32,13 +32,13 @@ calcBtn.addEventListener("click", () => {
 function myMethod(a, b, e) {
     const c = (b + a) / 2;
 
-    ranges.push([n, a.toFixed(4), c.toFixed(4), b.toFixed(4), myFunc(a).toFixed(4), myFunc(c).toFixed(4), myFunc(b).toFixed(4)]);
+    ranges.push([n, a, c, b, myFunc(a), myFunc(c), myFunc(b)]);
 
     if(Math.abs(b - a) <= e) {
-        return [c.toFixed(4), n];
+        return [c, n];
     }
     if(myFunc(c) === 0) {
-        return [c.toFixed(4), n];
+        return [c, n];
     }
     if(myFunc(a) * myFunc(c) < 0) {
         n += 1;
