@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторна робота №4</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header__content">
+          <h1>Лабораторна робота №4</h1>
+        </div>
+    </header>
+    <main class="main">
+      <aside class="menu">
+          <div class="menu__buttons">
+              <h2>Меню</h2>
+              <ul>
+                  <li class="menu__buttons-item"><button>Ввід даних</button></li>
+                  <li class="menu__buttons-item"><button id="table-btn">Таблиця кроків</button></li>
+                  <li class="menu__buttons-item"><button id="graphic-btn">Графік функції</button></li>
+              </ul>
+          </div>
+          <div class="menu__variant">
+            <p>Варіант: 2</p>
+            <p>Група: ІО-24</p>
+            <p>ПІБ: Бондаренко Тарас Андрійович</p>
+          </div>
+      </aside>
+      <div class="main__content">
+          <div class="main__tab-content active">
+            <h2>Ввід даних</h2>
+            <div class="variant">
+              Варіант:
+              <img src="assets/task.png" alt="task">
+            </div>
+            <p>Метод: Половинного ділення<span></span></p>
+            <div class="entry-content">
+              <label for="a">Межа А:</label>
+              <input type="text" name="a" id="a">
+            </div>
+            <div class="entry-content">
+              <label for="b">Межа B:</label>
+              <input type="text" name="b" id="b">
+            </div>
+            <div class="entry-content">
+              <label for="errors-btn">Похибка:</label>
+              <input type="text" name="e" id="e">
+            </div>
+            <p>Корінь локалізований на відрізку: <span id="result-segment"></span></p>
+            <p>Уточнений корінь: <span id="result"></span></p>
+            <div class="entry__buttons">
+              <button id="calculate-btn">Обчислити</button>
+              <button id="clear-btn">Очистити</button>
+            </div>
+          </div>
+          <div class="main__tab-content second-tab">
+            <h2>Таблиця кроків</h2>
+            <table id="data-table">
+              <tr>
+                <th>n</th>
+                <th>a</th>
+                <th>c</th>
+                <th>b</th>
+                <th>f(a)</th>
+                <th>f(c)</th>
+                <th>f(b)</th>
+              </tr>
+              <tbody id="table__content">
+
+              </tbody>
+            </table>
+          </div>
+          <div class="main__tab-content" id="graphic-tab">
+            <canvas id="graphic"></canvas>
+          </div>
+      </div>
+    </main>
+    <script src="
+    https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js
+    "></script>
+    <script src="script.js"></script>
+</body>
+</html>
