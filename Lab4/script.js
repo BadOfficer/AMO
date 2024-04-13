@@ -53,6 +53,12 @@ function calculateData() {
     n = 1; 
     ranges = [];
     graphicData = [];
+    console.log(myFunc(Number(aField.value)) * myFunc(Number(bField.value)));
+
+    if((myFunc(Number(aField.value)) * myFunc(Number(bField.value))) >= 0) {
+        alert("Змініть дані!");
+        return
+    }
 
     const [xN, nK] = myMethod(Number(aField.value), Number(bField.value), +eField.value);
     xNab.textContent = xN;
