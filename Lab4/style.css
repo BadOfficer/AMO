@@ -79,7 +79,7 @@ ul {
 .menu{
   height: 100%;
   display: grid;
-  grid-template-rows: 627px 150px;
+  grid-template-rows: 430px 150px;
   gap: 15px;
 }
 .menu__buttons{
@@ -181,6 +181,12 @@ th{
   border-color: #525F5F;
 }
 #graphic{
-  margin-top: 15px;
   background-color: white;
+}
+.graphic-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 500px;
+  margin-top: 15px;
 }

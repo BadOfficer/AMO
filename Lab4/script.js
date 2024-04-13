@@ -26,7 +26,6 @@ calcBtn.addEventListener("click", () => {
     tableBtn.disabled = false;
     graphicBtn.disabled = false;
     calculateData();
-    showGraphic("graphic", "graphic-tab", graphicData);
 })
 
 function myMethod(a, b, e) {
@@ -64,11 +63,19 @@ function calculateData() {
     xNab.textContent = xN;
     xNabSegment.textContent = `[${ranges[ranges.length - 1][1]}; ${ranges[ranges.length - 1][3]}]`;
 
-    for(let i = -4; i < 4; i++) {
-        graphicData.push({x: i, y: myFunc(i)})
+    for(let i = Number(aField.value); i < Number(bField.value); i += 0.1) {
+        if(i.toFixed(1) === xN.toFixed(1)) {
+            continue
+        }
+        graphicData.push({x: i.toFixed(2), y: myFunc(i)})
     }
+    graphicData.push({x: xN, y: myFunc(xN)});
+    graphicData.sort((a, b) => a.x - b.x);
     console.log(ranges);
-    createTable(ranges)
+    createTable(ranges);
+    console.log(xN);
+    const markedData = {x: xN, y: myFunc(xN)}
+    showGraphic("graphic", "graphic-container", graphicData, markedData);
 }
 tabsButtons.forEach((tab,index) => {
     tab.addEventListener("click", () => tabs(tabsButtons, tabsContents, index));
@@ -105,7 +112,7 @@ function createTable(data) {
     }
 }
 
-function showGraphic(el, container, data) {
+function showGraphic(el, container, data, markedData) {
     if(document.getElementById(el)) {
         document.getElementById(el).remove();
       }
@@ -115,7 +122,7 @@ function showGraphic(el, container, data) {
       newEl.setAttributeNode(att);
       document.getElementById(container).append(newEl)
     const ctx = document.getElementById(el).getContext('2d');
-
+      console.log(markedData);
     const graphic = new Chart(ctx, {
         type: 'line', // Тип графіка
         data: {
@@ -129,7 +136,15 @@ function showGraphic(el, container, data) {
             pointBackgroundColor: 'rgb(75, 192, 192)', // Колір точок
             pointBorderColor: 'rgba(75, 192, 192, 0.5)', // Колір рамки точок
             pointHoverRadius: 8 // Розмір точок при наведенні
-          }]
+          }, {
+            label: "Highlighted X",
+            data: [markedData],
+            pointRadius: 8,
+            pointBackgroundColor: 'yellow',
+            pointBorderColor: 'rgba(255, 0, 0, 0.5)',
+            pointHoverRadius: 10,
+            borderColor: "rgba(255, 0, 0, 0)",
+        }]
         },
         options: {
           scales: {
