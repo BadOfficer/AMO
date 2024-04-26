@@ -49,6 +49,7 @@ body {
   grid-template-rows: 10vh calc(90vh - 30px);
   gap: 15px;
   transition: .2s;
+  overflow-x: hidden;
 }
 ol,
 ul {
@@ -161,4 +162,53 @@ button{
 button:hover{
   transform: translate(3px, 3px);
   box-shadow: 0 0 0;
+}
+#result{
+    font-size: 20px;
+    color: #ececec;
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+.error-modal{
+    position: absolute;
+    top: 10px;
+    right: -100000px;
+    background-color: red;
+    padding: 25px;
+    border-radius: 5px;
+    color: #ececec;
+    transition: .2s;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.error-modal h3{
+    font-size: 25px;
+}
+.error-modal__manager{
+    display: flex;
+}
+.close-btn{
+    position: relative;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+.close-btn::before,
+.close-btn::after{
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    top: 0;
+    right: 0;
+    background-color: #ececec;
+}
+
+.close-btn::before{
+    transform: rotate(-45deg);
+}
+.close-btn::after{
+    transform: rotate(45deg);
 }

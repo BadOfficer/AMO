@@ -26,62 +26,62 @@
             <div class="entry-matrix">
                 <div class="entry-matrix__row">
                     <div class="r_c-entry">
-                        <input type="text" name="r_c" class="r_c-input">
+                        <input type="text" name="r_c" class="r_c-input kof_sys">
                         <label for="r_c">X1</label>
                     </div>
                     <p>+</p>
                     <div class="r_c-entry">
-                        <input type="text" name="r_c" class="r_c-input">
+                        <input type="text" name="r_c" class="r_c-input kof_sys">
                         <label for="r_c">X2</label>
                     </div>
                     <p>+</p>
                     <div class="r_c-entry">
-                        <input type="text" name="r_c" class="r_c-input">
+                        <input type="text" name="r_c" class="r_c-input kof_sys">
                         <label for="r_c">X3</label>
                     </div>
                     <p>=</p>
                     <div class="r_c-entry">
-                        <input type="text" name="r_c" class="r_c-input">
+                        <input type="text" name="r_c" class="r_c-input vil_ch">
                     </div>
                 </div>
                 <div class="entry-matrix__row">
                     <div class="r_c-entry">
-                        <input type="text" name="r_c" class="r_c-input">
+                        <input type="text" name="r_c" class="r_c-input kof_sys">
                         <label for="r_c">X1</label>
                     </div>
                     <p>+</p>
                     <div class="r_c-entry">
-                        <input type="text" name="r_c" class="r_c-input">
+                        <input type="text" name="r_c" class="r_c-input kof_sys">
                         <label for="r_c">X2</label>
                     </div>
                     <p>+</p>
                     <div class="r_c-entry">
-                        <input type="text" name="r_c" class="r_c-input">
+                        <input type="text" name="r_c" class="r_c-input kof_sys">
                         <label for="r_c">X3</label>
                     </div>
                     <p>=</p>
                     <div class="r_c-entry">
-                        <input type="text" name="r_c" class="r_c-input">
+                        <input type="text" name="r_c" class="r_c-input vil_ch">
                     </div>
                 </div>
                 <div class="entry-matrix__row">
                     <div class="r_c-entry">
-                        <input type="text" name="r_c" class="r_c-input">
+                        <input type="text" name="r_c" class="r_c-input kof_sys">
                         <label for="r_c">X1</label>
                     </div>
                     <p>+</p>
                     <div class="r_c-entry">
-                        <input type="text" name="r_c" class="r_c-input">
+                        <input type="text" name="r_c" class="r_c-input kof_sys">
                         <label for="r_c">X2</label>
                     </div>
                     <p>+</p>
                     <div class="r_c-entry">
-                        <input type="text" name="r_c" class="r_c-input">
+                        <input type="text" name="r_c" class="r_c-input kof_sys">
                         <label for="r_c">X3</label>
                     </div>
                     <p>=</p>
                     <div class="r_c-entry">
-                        <input type="text" name="r_c" class="r_c-input">
+                        <input type="text" name="r_c" class="r_c-input vil_ch">
                     </div>
                 </div>
             </div>
@@ -90,8 +90,16 @@
                 <button id="clear-btn">Очистити</button>
               </div>
             <h2>Результат</h2>
+            <div id="result"></div>
         </div>
     </main>
+    <div class="error-modal" id="error">
+        <div class="error-modal__manager">
+            <h3>Помилка!</h3>
+            <div class="close-btn" id="close-btn"></div>
+        </div>
+        <p id="error-modal__text"></p>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
