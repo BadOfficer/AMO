@@ -46,8 +46,7 @@ body {
   font-style: normal;
   background-color: #3F404D;
   display: grid;
-  grid-template-rows: 10vh calc(90vh - 30px);
-  gap: 15px;
+  grid-template-rows: 10vh calc(90vh - 15px);
   transition: .2s;
   overflow-x: hidden;
 }
@@ -63,7 +62,7 @@ ul {
 .header h1{
   font-size: 24px;
   padding: 15px;
-  margin: 15px;
+  margin: 15px 15px 0 15px;
   background-color: #525F5F;
   border-radius: 5px;
   color: #ececec;
@@ -117,11 +116,11 @@ ul {
     width: auto;
     margin: 15px;
 }
-.r_c-entry{
+.r_c{
     font-size: 20px;
 }
-.r_c-entry input {
-    width: 30px;
+.r_c input {
+    width: 60px;
     height: 30px;
     border-radius: 5px;
     border: none;
@@ -130,15 +129,15 @@ ul {
     font-size: 20px;
     text-align: center;
 }
-.entry-matrix__row{
+.matrix__row{
     display: flex;
     gap: 15px;
     align-items: center;
 }
-.entry-matrix__row p {
+.matrix__row p {
     font-size: 30px;
 }
-.entry-matrix{
+.matrix{
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -159,9 +158,13 @@ button{
     cursor: pointer;
     box-shadow: 3px 3px 2px 1px rgba(123,150,133, .3);
   }
-button:hover{
+button:hover,
+button:disabled{
   transform: translate(3px, 3px);
   box-shadow: 0 0 0;
+}
+button:disabled{
+    background-color: #9fa4a3;
 }
 #result{
     font-size: 20px;
@@ -211,4 +214,34 @@ button:hover{
 }
 .close-btn::after{
     transform: rotate(45deg);
+}
+
+.tabs__navbar ul {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    padding: 2px;
+}
+.tabs__item{
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+}
+.tabs__item.active{
+    background-color: #9fa4a3;
+}
+.tabs_content-container{
+    display: flex;
+    justify-content: center
+}
+.tabs__content{
+    flex-direction: column;
+    align-items: center;
+    display: none;
+}
+#final-matrix{
+    display: none;
+}
+.r_c-input:disabled{
+    background-color: #fff;
 }
