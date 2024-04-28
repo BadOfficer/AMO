@@ -9,6 +9,8 @@ const errorMesg = document.getElementById("error");
 const closeBtn = document.getElementById("close-btn");
 const entryMatrixBtn = document.getElementById("entry-matrix-btn");
 const finalMatrixBtn = document.getElementById("final-matrix-btn");
+const frPer = 1.1e-13;
+const scPer = 1.1e-17;
 
 finalMatrixBtn.disabled = true;
 entryMatrixBtn.disabled = true;
@@ -24,11 +26,15 @@ calcBtn.addEventListener("click", () => {
         showError("Введіть всі дані!");
         return;
     }
+    if(inputsArray.every(el => isNaN(Number(el.value)))) {
+        showError("Перевірте коректність даних!");
+        return;
+    }
     const [matrixKofs, matrixVilCh] = formationMatrix();
-    const [readyMatrixKofs, readyMatrixVilCh] = GausOdKof(matrixKofs, matrixVilCh);
+    const [readyMatrixKofs, partMatrixVilCh, readyMatrixVilCh] = GausOdKof(matrixKofs, matrixVilCh);
     const flag = showData(readyMatrixVilCh);
     if(flag) {
-        entryFinalMatrix(concateData(readyMatrixKofs, readyMatrixVilCh));
+        entryFinalMatrix(concateData(readyMatrixKofs, partMatrixVilCh));
         finalMatrixBtn.disabled = false;
     }
 })
@@ -67,31 +73,45 @@ function GausOdKof(kovMatrix, vilChMatrix) {
 
     [kovMatrixCopy[0], kovMatrixCopy[maxRowIndex]] = [kovMatrixCopy[maxRowIndex], kovMatrixCopy[0]];
     [vilChMatrixCopy[0], vilChMatrixCopy[maxRowIndex]] = [vilChMatrixCopy[maxRowIndex], vilChMatrixCopy[0]];
+    console.log(kovMatrixCopy);
+    const resultXAr = new Array(vilChMatrixCopy.length).fill(0);;
 
+    let k_k_el = kovMatrixCopy[0][0];
     for(let k = 0; k < kovMatrixCopy.length; k++) {
-        activeEl = kovMatrixCopy[k][k];
+        k_k_el = kovMatrixCopy[k][k];
         for(let i = 0; i < kovMatrixCopy.length; i++) {
-            if(k === i) {
+            if(i === k) {
                 for(let j = 0; j < kovMatrixCopy[i].length; j++) {
-                    kovMatrixCopy[i][j] = kovMatrixCopy[i][j] / activeEl;
+                    kovMatrixCopy[i][j] = kovMatrixCopy[i][j] / k_k_el;
                 }
-                vilChMatrixCopy[i] = vilChMatrixCopy[i] / activeEl;
+                vilChMatrixCopy[i] = vilChMatrixCopy[i] / k_k_el;
             }
-        }
-    
-        let savedValue = 0;
-        for(let i = 0; i < kovMatrixCopy.length; i++) {
-            savedValue = kovMatrixCopy[i][k];
-            if(k !== i) {
+            if(i > k){
+                let savedCurrI_K = kovMatrixCopy[i][k];
                 for(let j = 0; j < kovMatrixCopy[i].length; j++) {
-                   kovMatrixCopy[i][j] -= savedValue * kovMatrixCopy[k][j];
+                    kovMatrixCopy[i][j] = kovMatrixCopy[i][j] - (savedCurrI_K * kovMatrixCopy[k][j]);
+                    if(Math.abs(kovMatrixCopy[i][j]) < frPer && Math.abs(kovMatrixCopy[i][j]) > scPer) {
+                        kovMatrixCopy[i][j] = 0;
+                    }
+                    
                 }
-                vilChMatrixCopy[i] = vilChMatrixCopy[i] - savedValue * vilChMatrixCopy[k];
+                vilChMatrixCopy[i] -= savedCurrI_K * vilChMatrixCopy[k];
             }
         }
     }
-    console.log(kovMatrixCopy);
-    return [kovMatrixCopy, vilChMatrixCopy];
+
+    for(let k = kovMatrixCopy.length - 1; k >= 0; k--) {
+        let partSum = 0;
+        for(let j = kovMatrixCopy[k].length - 1; j >= 0; j--) {
+            if(j === k) {
+                continue;
+            }
+            partSum += kovMatrixCopy[k][j] * resultXAr[j];
+        }
+        resultXAr[k] = (vilChMatrixCopy[k] - partSum) / kovMatrixCopy[k][k];
+    }
+
+    return [kovMatrixCopy, vilChMatrixCopy, resultXAr];
 }
 
 function showData(resultAr) {
@@ -110,7 +130,12 @@ function showData(resultAr) {
             resultCont.appendChild(pEl);
             return
         }
-        pEl.textContent = `X${i + 1} = ${resultAr[i].toFixed(3)};`
+        if(resultAr[i].toFixed(3) % 1 !== 0) {
+            pEl.textContent = `X${i + 1} = ${resultAr[i].toFixed(3)};`
+        } else {
+            pEl.textContent = `X${i + 1} = ${resultAr[i].toFixed(0)};`
+        }
+        
         resultCont.appendChild(pEl);
     }
     return true;
@@ -193,7 +218,7 @@ function entryFinalMatrix(data) {
         if(data[i].toFixed(3) % 1 !== 0) {
             finalMatrixInputs[i].value = data[i].toFixed(3);
         } else {
-            finalMatrixInputs[i].value = data[i];
+            finalMatrixInputs[i].value = data[i].toFixed(0);
         }
     }
 }

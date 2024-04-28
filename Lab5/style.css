@@ -48,6 +48,7 @@ body {
   display: grid;
   grid-template-rows: 10vh calc(90vh - 15px);
   transition: .2s;
+  gap: 15px;
   overflow-x: hidden;
 }
 ol,
