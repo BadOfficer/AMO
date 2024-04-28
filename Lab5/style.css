@@ -75,6 +75,7 @@ ul {
     grid-template-columns: 1.5fr 5fr;
     gap: 15px;
     margin: 0 15px;
+    margin-bottom: 15px;
 }
 .main h2{
     font-size: 30px;
